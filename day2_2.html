@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td,
+        th {
+            border: 1px solid black;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .colSecond {
+            width: 20%;
+            background-color: yellow;
+            border: 2px dotted red;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <caption>3-1반 역사 성적표</caption>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-center">평균</td>
+                <td>84점</td>
+            </tr>
+        </tfoot>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>반</th>
+                <th>번호</th>
+                <th>점수</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>재현</td>
+                <td rowspan="3">1반</td>
+                <td>1번</td>
+                <td>70점</td>
+            </tr>
+            <tr>
+                <td>재현</td>
+                <!-- <td>1반</td> -->
+                <td>1번</td>
+                <td>70점</td>
+            </tr>
+            <tr>
+                <td>재현</td>
+                <!-- <td>1반</td> -->
+                <td>1번</td>
+                <td>70점</td>
+            </tr>
+        </tbody>
+    </table>
