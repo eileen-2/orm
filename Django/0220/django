@@ -1,0 +1,238 @@
+# VSC django 익스텐션
+
+* black formatter: 권고사항에 맞지 않는 문법을 강제로 수정해줌. 협업 시 사용.
+* django: 자동완성 -> 코파일럿이 나오면서 중요성 낮아짐
+* thunder client: http request, requedst test 도구. 
+
+# Django
+* 장고는 파이썬으로 작성된 오픈 소스 웹 프레임워크
+* https://github.com/django/django
+
+# 프레임웍 & 라이브러리 & 써드파티
+* 프레임웍: 코드의 주권이 나에게 있지 않음. 설계도면대로 내 코드를 부품처럼 사용하는 것
+* 라이브러리: 코드의 주권이 나에게 있음. 내가 코드를 호출해서 사용하는 것
+* 서드파티: django 서드파티> django와 호환되는 여러 라이브러리 + 프레임웍
+* 장점: django 라이브러리 생태계가 활발
+* 오픈소스 이므로 보안 취약점이 나오면 공유가 되고, 이것을 다음 버전에서 업데이트.
+
+# Django 개발 flow 선택
+1. 모놀리식 vs 마이크로식
+* Chat GPT로 Django 개발하면 대부분 모놀리식 코드를 줌
+* 모놀리식
+    * 1개의 서버에서 Django + HTML, CSS, JS
+    * 2~3명 소규모 개발팀에 유리->서비스를 엄청 빠르게 런칭
+* 마이크로식
+    * 2개의 서버
+        * BE 서버: Django
+        * FE 서버: HTML, CSS, JS(바닐라JS, React, nextjs)
+    * 팀 단위 5명이상 개발팀에 필수
+
+# Django의 특징
+* ORM: 나는 Python 코드만 할 줄 아는데? 이걸로 DB까지 전부 조작하고 싶어. -> ORM, 실제로 DB 쿼리를 몰라도 웬만한 서비스는 만들 수 있습니다.
+    * 백엔드 개발자가 DB 쿼리를 반드시 공부해야함. Django가 주는 편안함에 안주하면 안됨
+* 서비스 구현에 대부분의 기능이 구현되어 있으며, Admin 페이지까지 해주는 full-stack 개발 프레임웍
+* 보안: 취약점 테스트를 통해 안정성이 검증된 보안기능을 제공
+* MTV 패턴: Model(DB)-Template(사용자 출력화면)-View(두뇌) 패턴 -> 기능을 분리하여 개발할 수 있음
+    1. Model: 데이터베이스와 상호작용하는 컴포넌트
+    2. Template: 사용자에게 보여지는 HTML, CSS, JS 등
+    3. View: HTTP 요청 처리 및 Model과 Template 연결
+
+# 다른 서비스와 개발 난이도 비교
+* 워드프레스 VS Django: 개발단가가 00 개 정도 차이남
+개발 난이도 자체가 다르다. 해야하는 과업도 다르다. 그러나 기보적인 CRUD 와 같은 게시판 같은 형태의 서비스라면 워드프레스가 월등이 효율이 좋다.
+* Node VS Django: Django는 다 해줌. Node Express 는 일일이 개발해야함. ex) Django는 설치만 해도 admin page가 나오지만 Node Express는 개발해야 함.
+* Spring VS Django: Spring은 세팅하는데 Django는 개발이 완료되어 나온다는 농담이 있음. 그만큼 개발속도 차이가 많이 남.
+* 백엔드 개발자의 숙명. 모든 프레임웍들을 조금씩 다 하게 됨. 
+
+# Django 설계 철학
+1. 느슨한 결합
+Django 스택의 근본적인 목표는 느슨한 결합, 탄탄한 응집입니다. 프레임워크의 각 계층은 정말로 필요하기 전에는 서로 “알지 못해야” 합니다.
+
+예를 들어, 템플릿 시스템은 웹 요청에 대해 아무 것도 모르고, DB 계층은 데이터 표시에 대해 아무 것도 모르고, View 시스템은 프로그래머가 사용하는 템플릿 시스템을 사용하는지와 무관합니다.
+
+Django는 편의성을 위해 풀 스택으로 제공되지만, 스택의 각 부분은 가능한 한 독립성을 띱니다.
+
+2. 적은 코드
+Django는 가능한 한 최소한의 코드를 사용하며, 틀에 박힌 코드를 배제합니다. Django는 인트로스펙션과 같은 Python의 동적인 기능을 최대한 활용합니다.
+
+3. 신속한 개발
+21세기 웹 프레임워크의 핵심은 웹 개발의 지루한 부분을 빠르게 만드는 것입니다. Django는 놀랄만큼 빠른 웹 개발을 가능하게 합니다.
+
+4. 반복하지 말 것(DRY)
+고유한 개념 및 데이터는 단 한 번, 단 한 곳에 존재하는 것으로 족합니다. 중복성은 나쁜 것이고, 정규화는 좋은 것입니다.
+
+그러한 이유로, 본 프레임워크는 최소한의 것들을 가지고 최대한의 것을 만들어내도록 합니다.
+
+# Django
+```Python
+# 파이썬 설치
+#    *https://www.python.org/downloads/
+```
+
+# 폴더 기준으로 파일 열기
+    * File> open Folder > Django 작업할 폴더
+
+# 터미널을 열어 작업하기
+#    * 터미널 열기(ctrl+`)
+
+python --version
+# python 버전 확인
+mkdir mysite 
+# mysite 폴더 생성
+cd mysite 
+# mysite 폴더 이동
+python -m venv venv
+# 가상 환경 설정-venv라는 가상환경 이름 (필수) -> 관리, 이관, 업데이트 등에 중요한 거점(pip list로 python 라이브러리 확인)
+
+# (venv) ~~ 이렇게 가상환경인 상태에서만 작업을 해야함. 컴퓨터 안에 컴퓨터.
+
+pip install django
+# 최신 django 버전으로 설치합니다. 구버전 설치를 원할 경우 pip install django==4.0
+
+
+.\venv\Scripts\activate # window
+# 가상환경속으로 들어가기
+
+django-admin startproject tutorialdjango .
+# 띄어쓰기 + '.' !!!!! 설치된 django tutorialdjango라는 이름으로 초기세팅 하기.
+
+python manage.py migrate
+# 우리가 짠 python 코드를 DB에 반영하기(실무에서는 이 명령어를 초기세팅이 다~~ 끝나고 함. 특히 user>admin 가입 소스코드를 만지면 먼저 migrate를 하면 error가 나는 경우가 있음.)
+# 처음에 migrate를 하면 기본적으로 django에서 세팅해준느 소스코드를 DB에 생성 및 반영
+
+python manage.py runserver
+# 파이썬 서버를 구동합니다.
+
+
+
+################################
+#tutorialdjango > settings.py
+
+ALLOWED_HOSTS = ["*"] # 웹서비스에 접속할 수 있는 사람: 모든 사람으로 설정 / 서비스시에는 URL 지정해서 그 URL로 들어오는 사람만 접속하게 경로를 지정함.
+
+Terminal에서 Ctrl + C 
+# 서버 종료(서비스 작동 중지)
+
+python manage.py startapp main
+# main이라는 앱((url~~/main)을 하나 만들기
+
+
+################################
+# tutorialdjango > settings.py
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    "main", # 추가한 앱(main페이지) 추가하기. 보통 마지막에 넣는데 맨 위에 넣는 분도 있음
+]
+
+################################
+# URL 구조 작성(기획단계에서 작성)
+
+www.whaleride.com/admin admin페이지
+www.whaleride.com/ 메인페이지
+www.whaleride.com/a a페이지
+www.whaleride.com/b b페이지
+www.whaleride.com/c c페이지
+www.whaleride.com/whale whale 소개 페이지
+www.whaleride.com/whaleride whaleride 소개 페이지
+www.whaleride.com/whaleride/1 whaleride 소개 페이지
+
+##################################
+# URL 설계한 것을 반영하는 곳
+# tutorialdjango > urls.py에 반영
+from django.contrib import admin
+from django.urls import path
+from main.views import index, a, b, c, whale, whaleride
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', index),
+    path('a/', a),
+    path('b/', b),
+    path('c/', c),
+    path('whale/', whale),
+    path('whaleride/', whaleride),
+]
+##################################
+# 설계한 URL에 접속했을 때 실제 보게될 텍스트는 views.py에서 수정
+# HttpResponse는 주로 테스트용도
+# main > views.py
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def index(request):
+    return HttpResponse("<h1>메인화면입니다!</h1>")
+
+def a(request):
+    return HttpResponse("<h1>a 입니다!</h1>")
+
+def b(request):
+    return HttpResponse("<h1>b 입니다!</h1>")
+
+def c(request):
+    return HttpResponse("<h1>c 입니다!</h1>")
+
+def whale(request):
+    return HttpResponse("<h1>whale 입니다!</h1>")
+
+def whaleride(request):
+    return HttpResponse("<h1>whaleride 입니다!</h1>")
+
+##################################
+python manage.py runserver
+# 실무에서 사용하는 Function Views(FBV)로 views.py 수정!!
+# HttpResponse를 render(file을 읽어서 httpresponse로 출력)로 수정, def함수 명령어와 정확한 url로 수정
+# main > views.py
+from django.shortcuts import render
+
+def index(request):
+    return render(request, "main/index.html")
+
+def a(request):
+    return render(request, "main/a.html")
+
+def b(request):
+    return render(request, "main/b.html")
+
+def c(request):
+    return render(request, "main/c.html")
+
+def whale(request):
+    return render(request, "main/whale.html")
+
+def whaleride(request):
+    return render(request, "main/whaleride.html")
+
+##################################
+
+mysite > main > templates > main > index.html
+mysite > main > templates > main > a.html
+mysite > main > templates > main > b.html
+mysite > main > templates > main > c.html
+mysite > main > templates > main > whale.html
+mysite > main > templates > main > whaleride.html
+
+##################################
+
+각 html 안에는 구분이 가능한 텍스트를 넣어주세요.
+<h1>index화면입니다.</h1>
+
+##################################
+
+Ctrl + C (서버 종료) 한 다음 다시
+python manage.py runserver(서버 운영)
+
+##################################
+
+TemplateDoseNotExist at /c/ 
+위와 같은 error는 어떠한 경우에 나오는지 숙지!!
+
+##################################
+
+
+```
